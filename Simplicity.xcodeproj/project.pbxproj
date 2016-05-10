@@ -8,12 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		DF74EC341CE2A8BB008F16BF /* Simplicity.h in Headers */ = {isa = PBXBuildFile; fileRef = DF74EC331CE2A8BB008F16BF /* Simplicity.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DF74EC3F1CE2A943008F16BF /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = DF74EC3E1CE2A943008F16BF /* LICENSE */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		DF74EC301CE2A8BB008F16BF /* Simplicity.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Simplicity.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF74EC331CE2A8BB008F16BF /* Simplicity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Simplicity.h; sourceTree = "<group>"; };
 		DF74EC351CE2A8BB008F16BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DF74EC3B1CE2A919008F16BF /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		DF74EC3C1CE2A936008F16BF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		DF74EC3E1CE2A943008F16BF /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,6 +34,9 @@
 		DF74EC261CE2A8BB008F16BF = {
 			isa = PBXGroup;
 			children = (
+				DF74EC3E1CE2A943008F16BF /* LICENSE */,
+				DF74EC3C1CE2A936008F16BF /* README.md */,
+				DF74EC3B1CE2A919008F16BF /* .gitignore */,
 				DF74EC321CE2A8BB008F16BF /* Simplicity */,
 				DF74EC311CE2A8BB008F16BF /* Products */,
 			);
@@ -120,6 +127,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF74EC3F1CE2A943008F16BF /* LICENSE in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
