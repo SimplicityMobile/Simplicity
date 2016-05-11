@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		DF74EC341CE2A8BB008F16BF /* Simplicity.h in Headers */ = {isa = PBXBuildFile; fileRef = DF74EC331CE2A8BB008F16BF /* Simplicity.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF74EC3F1CE2A943008F16BF /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = DF74EC3E1CE2A943008F16BF /* LICENSE */; };
+		DF74EC411CE2AC2F008F16BF /* LoginProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF74EC401CE2AC2F008F16BF /* LoginProvider.swift */; };
+		DF74EC431CE2AC45008F16BF /* OAuth2LoginProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF74EC421CE2AC45008F16BF /* OAuth2LoginProvider.swift */; };
+		DF74EC451CE2AC54008F16BF /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF74EC441CE2AC54008F16BF /* Helpers.swift */; };
+		DF74EC471CE2AC6F008F16BF /* Simplicity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF74EC461CE2AC6F008F16BF /* Simplicity.swift */; };
+		DF74EC4A1CE2ACF0008F16BF /* Facebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF74EC491CE2ACF0008F16BF /* Facebook.swift */; };
+		DF74EC4C1CE2AD19008F16BF /* Stormpath.podspec in Resources */ = {isa = PBXBuildFile; fileRef = DF74EC4B1CE2AD19008F16BF /* Stormpath.podspec */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -18,6 +24,12 @@
 		DF74EC3B1CE2A919008F16BF /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		DF74EC3C1CE2A936008F16BF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		DF74EC3E1CE2A943008F16BF /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		DF74EC401CE2AC2F008F16BF /* LoginProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginProvider.swift; sourceTree = "<group>"; };
+		DF74EC421CE2AC45008F16BF /* OAuth2LoginProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuth2LoginProvider.swift; sourceTree = "<group>"; };
+		DF74EC441CE2AC54008F16BF /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		DF74EC461CE2AC6F008F16BF /* Simplicity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Simplicity.swift; sourceTree = "<group>"; };
+		DF74EC491CE2ACF0008F16BF /* Facebook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Facebook.swift; path = LoginProviders/Facebook.swift; sourceTree = "<group>"; };
+		DF74EC4B1CE2AD19008F16BF /* Stormpath.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Stormpath.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,6 +46,7 @@
 		DF74EC261CE2A8BB008F16BF = {
 			isa = PBXGroup;
 			children = (
+				DF74EC4B1CE2AD19008F16BF /* Stormpath.podspec */,
 				DF74EC3E1CE2A943008F16BF /* LICENSE */,
 				DF74EC3C1CE2A936008F16BF /* README.md */,
 				DF74EC3B1CE2A919008F16BF /* .gitignore */,
@@ -53,10 +66,23 @@
 		DF74EC321CE2A8BB008F16BF /* Simplicity */ = {
 			isa = PBXGroup;
 			children = (
+				DF74EC481CE2ACB8008F16BF /* LoginProviders */,
 				DF74EC331CE2A8BB008F16BF /* Simplicity.h */,
 				DF74EC351CE2A8BB008F16BF /* Info.plist */,
+				DF74EC401CE2AC2F008F16BF /* LoginProvider.swift */,
+				DF74EC421CE2AC45008F16BF /* OAuth2LoginProvider.swift */,
+				DF74EC441CE2AC54008F16BF /* Helpers.swift */,
+				DF74EC461CE2AC6F008F16BF /* Simplicity.swift */,
 			);
 			path = Simplicity;
+			sourceTree = "<group>";
+		};
+		DF74EC481CE2ACB8008F16BF /* LoginProviders */ = {
+			isa = PBXGroup;
+			children = (
+				DF74EC491CE2ACF0008F16BF /* Facebook.swift */,
+			);
+			name = LoginProviders;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,6 +154,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF74EC3F1CE2A943008F16BF /* LICENSE in Resources */,
+				DF74EC4C1CE2AD19008F16BF /* Stormpath.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,6 +165,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF74EC411CE2AC2F008F16BF /* LoginProvider.swift in Sources */,
+				DF74EC451CE2AC54008F16BF /* Helpers.swift in Sources */,
+				DF74EC4A1CE2ACF0008F16BF /* Facebook.swift in Sources */,
+				DF74EC471CE2AC6F008F16BF /* Simplicity.swift in Sources */,
+				DF74EC431CE2AC45008F16BF /* OAuth2LoginProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,6 +270,7 @@
 		DF74EC391CE2A8BB008F16BF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -248,12 +281,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.stormpath.Simplicity;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		DF74EC3A1CE2A8BB008F16BF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
