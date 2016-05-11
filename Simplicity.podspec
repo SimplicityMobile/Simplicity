@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
 s.name             = "Simplicity"
-s.version          = "0.1.0"
+s.version          = "0.0.1"
 s.summary          = "A framework for authenticating with external providers on iOS"
 
 # This description is used to generate tags and improve search results.
@@ -23,7 +23,7 @@ DESC
 
 s.homepage         = "https://github.com/SimplicityMobile/Simplicity"
 # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
-s.license          = 'Apache2'
+s.license          = 'Apache 2.0'
 s.author           = { "Edward Jiang" => "edward@stormpath.com" }
 s.source           = { :git => "https://github.com/SimplicityMobile/Simplicity.git", :tag => s.version.to_s }
 # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
@@ -36,7 +36,6 @@ s.source_files = 'Simplicity/**/*.swift'
 #   'Simplicity' => ['Simplicity/Assets/*.png']
 # }
 
-s.public_header_files = 'Simplicity/**/*.h'
 # s.frameworks = 'UIKit', 'MapKit'
 # s.dependency 'AFNetworking', '~> 2.3'
 end
