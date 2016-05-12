@@ -11,7 +11,7 @@ import SafariServices
 
 public typealias ExternalLoginCallback = (authToken: String?, error: NSError?) -> Void
 
-public class LoginManager: NSObject {
+public class Simplicity: NSObject {
     static var currentLoginProvider: LoginProvider?
     static var callback: ExternalLoginCallback?
     static var safari: UIViewController?
@@ -25,6 +25,7 @@ public class LoginManager: NSObject {
     
     /// Deep link handler (iOS9)
     public static func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
+        safari?.dismissViewControllerAnimated(true, completion: nil)
         if url.scheme != currentLoginProvider?.urlScheme {
             return false
         }

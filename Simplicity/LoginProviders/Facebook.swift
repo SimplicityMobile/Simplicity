@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class FacebookLoginProvider: OAuth2LoginProvider {
+public class Facebook: OAuth2LoginProvider {
     public var scopes = Set<String>()
     public var urlScheme: String
     
@@ -51,12 +51,12 @@ public class FacebookLoginProvider: OAuth2LoginProvider {
         callback?(authToken: accessToken, error: nil)
     }
     
-    public init?() {
+    public init() {
         // Search for URL Scheme, error if not there
         
         guard let urlScheme = Helpers.registeredURLSchemes(matching: {$0.hasPrefix("fb")}).first,
             range = urlScheme.rangeOfString("\\d+", options: .RegularExpressionSearch) else {
-                return nil
+                preconditionFailure("You must configure your Facebook URL Scheme to use Facebook login.")
         }
         self.urlScheme = urlScheme
         self.clientId = urlScheme.substringWithRange(range)
