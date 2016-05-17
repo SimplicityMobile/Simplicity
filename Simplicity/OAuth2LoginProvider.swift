@@ -12,6 +12,7 @@ public protocol OAuth2LoginProvider: LoginProvider {
     var clientId: String { get }
     var scopes: Set<String> { get set }
     var grantType: OAuth2GrantType { get }
+    var state: String { get }
 }
 
 public enum OAuth2GrantType: String {
