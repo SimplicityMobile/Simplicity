@@ -25,6 +25,8 @@ public extension OAuth2Scopes {
     }
 }
 
-public enum OAuth2GrantType {
-    case AuthorizationCode, Implicit, Custom
+public enum OAuth2GrantType: String {
+    case AuthorizationCode = "authorization_code",
+    Implicit = "implicit",
+    Custom = ""
 }

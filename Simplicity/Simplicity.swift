@@ -9,7 +9,7 @@
 import UIKit
 import SafariServices
 
-public typealias ExternalLoginCallback = (authToken: String?, error: NSError?) -> Void
+public typealias ExternalLoginCallback = (accessToken: String?, error: NSError?) -> Void
 
 public class Simplicity: NSObject {
     static var currentLoginProvider: LoginProvider?

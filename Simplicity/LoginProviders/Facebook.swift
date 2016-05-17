@@ -44,11 +44,11 @@ public class Facebook: OAuth2LoginProvider {
         
         // Get the access token, and check that the state is the same
         guard let accessToken = url.fragmentDictionary["access_token"] where url.fragmentDictionary["state"] == "\(state)" else {
-            callback?(authToken: nil, error: nil)
+            callback?(accessToken: nil, error: nil)
             return
         }
         
-        callback?(authToken: accessToken, error: nil)
+        callback?(accessToken: accessToken, error: nil)
     }
     
     public init() {
