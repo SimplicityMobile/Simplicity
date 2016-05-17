@@ -15,7 +15,7 @@ public class Facebook: OAuth2LoginProvider {
     public var state = arc4random_uniform(10000000)
     public var clientId: String
     public var grantType: OAuth2GrantType = .Custom
-    
+    public var authType: FacebookAuthType?
     
     public var authorizationURL: NSURL {
         // Auth_type is re-request since we need to ask for email scope again if
@@ -26,7 +26,7 @@ public class Facebook: OAuth2LoginProvider {
                      "redirect_uri": urlScheme + "://authorize",
                      "response_type": "token",
                      "scope": scopes.joinWithSeparator(" "),
-                     "auth_type": "rerequest",
+                     "auth_type": authType?.rawValue,
                      "state": String(state)]
         
         let queryString = Helpers.queryString(query)!
@@ -61,4 +61,9 @@ public class Facebook: OAuth2LoginProvider {
         self.urlScheme = urlScheme
         self.clientId = urlScheme.substringWithRange(range)
     }
+}
+
+public enum FacebookAuthType: String {
+    case Rerequest = "rerequest",
+    Reauthenticate = "reauthenticate"
 }

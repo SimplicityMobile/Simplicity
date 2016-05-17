@@ -20,8 +20,14 @@ class Helpers {
         return urlSchemes.flatMap({closure($0) ? $0 : nil})
     }
     
-    static func queryString(parts: [String: String]) -> String? {
-        return parts.map { $0 + "=" + $1 }.joinWithSeparator("&").stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
+    static func queryString(parts: [String: String?]) -> String? {
+        return parts.flatMap { key, value -> String? in
+            if let value = value {
+                return key + "=" + value
+            } else {
+                return nil
+            }
+        }.joinWithSeparator("&").stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
     }
 }
 
