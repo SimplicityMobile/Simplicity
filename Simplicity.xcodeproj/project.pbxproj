@@ -10,11 +10,13 @@
 		DF74EC341CE2A8BB008F16BF /* Simplicity.h in Headers */ = {isa = PBXBuildFile; fileRef = DF74EC331CE2A8BB008F16BF /* Simplicity.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF74EC3F1CE2A943008F16BF /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = DF74EC3E1CE2A943008F16BF /* LICENSE */; };
 		DF74EC411CE2AC2F008F16BF /* LoginProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF74EC401CE2AC2F008F16BF /* LoginProvider.swift */; };
-		DF74EC431CE2AC45008F16BF /* OAuth2LoginProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF74EC421CE2AC45008F16BF /* OAuth2LoginProvider.swift */; };
+		DF74EC431CE2AC45008F16BF /* OAuth2Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF74EC421CE2AC45008F16BF /* OAuth2Provider.swift */; };
 		DF74EC451CE2AC54008F16BF /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF74EC441CE2AC54008F16BF /* Helpers.swift */; };
 		DF74EC471CE2AC6F008F16BF /* Simplicity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF74EC461CE2AC6F008F16BF /* Simplicity.swift */; };
 		DF74EC4A1CE2ACF0008F16BF /* Facebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF74EC491CE2ACF0008F16BF /* Facebook.swift */; };
 		DF74EC4C1CE2AD19008F16BF /* Simplicity.podspec in Resources */ = {isa = PBXBuildFile; fileRef = DF74EC4B1CE2AD19008F16BF /* Simplicity.podspec */; };
+		DFB3897F1CEBAA57001DDCCE /* LoginError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB3897E1CEBAA57001DDCCE /* LoginError.swift */; };
+		DFB389811CEBAA98001DDCCE /* OAuth2Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB389801CEBAA98001DDCCE /* OAuth2Error.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,11 +27,13 @@
 		DF74EC3C1CE2A936008F16BF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		DF74EC3E1CE2A943008F16BF /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		DF74EC401CE2AC2F008F16BF /* LoginProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginProvider.swift; sourceTree = "<group>"; };
-		DF74EC421CE2AC45008F16BF /* OAuth2LoginProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuth2LoginProvider.swift; sourceTree = "<group>"; };
+		DF74EC421CE2AC45008F16BF /* OAuth2Provider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuth2Provider.swift; sourceTree = "<group>"; };
 		DF74EC441CE2AC54008F16BF /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		DF74EC461CE2AC6F008F16BF /* Simplicity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Simplicity.swift; sourceTree = "<group>"; };
 		DF74EC491CE2ACF0008F16BF /* Facebook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Facebook.swift; path = LoginProviders/Facebook.swift; sourceTree = "<group>"; };
 		DF74EC4B1CE2AD19008F16BF /* Simplicity.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Simplicity.podspec; sourceTree = "<group>"; };
+		DFB3897E1CEBAA57001DDCCE /* LoginError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginError.swift; sourceTree = "<group>"; };
+		DFB389801CEBAA98001DDCCE /* OAuth2Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuth2Error.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,12 +67,10 @@
 		DF74EC321CE2A8BB008F16BF /* Simplicity */ = {
 			isa = PBXGroup;
 			children = (
+				DFB389821CEBC706001DDCCE /* Base */,
 				DF74EC481CE2ACB8008F16BF /* LoginProviders */,
 				DF74EC331CE2A8BB008F16BF /* Simplicity.h */,
 				DF74EC351CE2A8BB008F16BF /* Info.plist */,
-				DF74EC401CE2AC2F008F16BF /* LoginProvider.swift */,
-				DF74EC421CE2AC45008F16BF /* OAuth2LoginProvider.swift */,
-				DF74EC441CE2AC54008F16BF /* Helpers.swift */,
 				DF74EC461CE2AC6F008F16BF /* Simplicity.swift */,
 			);
 			path = Simplicity;
@@ -91,6 +93,18 @@
 				DF74EC3B1CE2A919008F16BF /* .gitignore */,
 			);
 			name = "Root Directory";
+			sourceTree = "<group>";
+		};
+		DFB389821CEBC706001DDCCE /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				DF74EC401CE2AC2F008F16BF /* LoginProvider.swift */,
+				DF74EC421CE2AC45008F16BF /* OAuth2Provider.swift */,
+				DF74EC441CE2AC54008F16BF /* Helpers.swift */,
+				DFB3897E1CEBAA57001DDCCE /* LoginError.swift */,
+				DFB389801CEBAA98001DDCCE /* OAuth2Error.swift */,
+			);
+			name = Base;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -176,8 +190,10 @@
 				DF74EC411CE2AC2F008F16BF /* LoginProvider.swift in Sources */,
 				DF74EC451CE2AC54008F16BF /* Helpers.swift in Sources */,
 				DF74EC4A1CE2ACF0008F16BF /* Facebook.swift in Sources */,
+				DFB389811CEBAA98001DDCCE /* OAuth2Error.swift in Sources */,
+				DFB3897F1CEBAA57001DDCCE /* LoginError.swift in Sources */,
 				DF74EC471CE2AC6F008F16BF /* Simplicity.swift in Sources */,
-				DF74EC431CE2AC45008F16BF /* OAuth2LoginProvider.swift in Sources */,
+				DF74EC431CE2AC45008F16BF /* OAuth2Provider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol OAuth2LoginProvider: LoginProvider {
+public protocol OAuth2Provider: LoginProvider {
     var clientId: String { get }
     var scopes: Set<String> { get set }
     var grantType: OAuth2GrantType { get }

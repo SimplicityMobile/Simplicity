@@ -8,11 +8,11 @@
 
 import Foundation
 
-public class Facebook: OAuth2LoginProvider {
+public class Facebook: OAuth2Provider {
     public var scopes = Set<String>()
     public var urlScheme: String
     
-    public var state = arc4random_uniform(10000000)
+    public var state = String(arc4random_uniform(10000000))
     public var clientId: String
     public var grantType: OAuth2GrantType = .Custom
     public var authType: FacebookAuthType?
@@ -27,7 +27,7 @@ public class Facebook: OAuth2LoginProvider {
                      "response_type": "token",
                      "scope": scopes.joinWithSeparator(" "),
                      "auth_type": authType?.rawValue,
-                     "state": String(state)]
+                     "state": state]
         
         let queryString = Helpers.queryString(query)!
         
@@ -35,16 +35,13 @@ public class Facebook: OAuth2LoginProvider {
     }
     
     public func linkHandler(url: NSURL, callback: ExternalLoginCallback?) {
-        if(url.queryDictionary["error"] != nil) {
-            // We are not even going to callback, because the user never started
-            // the login process in the first place. Error is always because
-            // people cancelled the FB login according to https://developers.facebook.com/docs/facebook-login/manually-build-a-login-flow
-            return
-        }
-        
         // Get the access token, and check that the state is the same
-        guard let accessToken = url.fragmentDictionary["access_token"] where url.fragmentDictionary["state"] == "\(state)" else {
-            callback?(accessToken: nil, error: nil)
+        guard let accessToken = url.fragmentDictionary["access_token"] where url.fragmentDictionary["state"] == state else {
+            if let error = OAuth2Error.error(url.queryDictionary) {
+                callback?(accessToken: nil, error: error)
+            } else {
+                callback?(accessToken: nil, error: LoginError.InternalSDKError)
+            }
             return
         }
         
