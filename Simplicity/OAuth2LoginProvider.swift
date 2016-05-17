@@ -14,17 +14,6 @@ public protocol OAuth2LoginProvider: LoginProvider {
     var grantType: OAuth2GrantType { get }
 }
 
-public protocol OAuth2Scopes {
-    var set: Set<String> { get set }
-    var string: String { get }
-}
-
-public extension OAuth2Scopes {
-    public var string: String {
-        return set.joinWithSeparator(" ")
-    }
-}
-
 public enum OAuth2GrantType: String {
     case AuthorizationCode = "authorization_code",
     Implicit = "implicit",
