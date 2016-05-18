@@ -18,6 +18,7 @@
 		DFB3897F1CEBAA57001DDCCE /* LoginError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB3897E1CEBAA57001DDCCE /* LoginError.swift */; };
 		DFB389811CEBAA98001DDCCE /* OAuth2Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB389801CEBAA98001DDCCE /* OAuth2Error.swift */; };
 		DFB389841CEBD6D0001DDCCE /* OAuth2.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB389831CEBD6D0001DDCCE /* OAuth2.swift */; };
+		DFB389861CECFBFC001DDCCE /* Google.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB389851CECFBFC001DDCCE /* Google.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		DFB3897E1CEBAA57001DDCCE /* LoginError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginError.swift; sourceTree = "<group>"; };
 		DFB389801CEBAA98001DDCCE /* OAuth2Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuth2Error.swift; sourceTree = "<group>"; };
 		DFB389831CEBD6D0001DDCCE /* OAuth2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OAuth2.swift; path = LoginProviders/OAuth2.swift; sourceTree = "<group>"; };
+		DFB389851CECFBFC001DDCCE /* Google.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Google.swift; path = LoginProviders/Google.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,8 +83,9 @@
 		DF74EC481CE2ACB8008F16BF /* LoginProviders */ = {
 			isa = PBXGroup;
 			children = (
-				DF74EC491CE2ACF0008F16BF /* Facebook.swift */,
 				DFB389831CEBD6D0001DDCCE /* OAuth2.swift */,
+				DF74EC491CE2ACF0008F16BF /* Facebook.swift */,
+				DFB389851CECFBFC001DDCCE /* Google.swift */,
 			);
 			name = LoginProviders;
 			sourceTree = "<group>";
@@ -191,6 +194,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF74EC411CE2AC2F008F16BF /* LoginProvider.swift in Sources */,
+				DFB389861CECFBFC001DDCCE /* Google.swift in Sources */,
 				DF74EC451CE2AC54008F16BF /* Helpers.swift in Sources */,
 				DFB389841CEBD6D0001DDCCE /* OAuth2.swift in Sources */,
 				DF74EC4A1CE2ACF0008F16BF /* Facebook.swift in Sources */,

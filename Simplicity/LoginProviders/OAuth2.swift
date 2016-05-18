@@ -9,17 +9,20 @@
 import UIKit
 
 public class OAuth2: OAuth2Provider {
-    public var scopes = Set<String>()
-    public var urlScheme: String
+    public final var scopes = Set<String>()
+    private(set) public final var urlScheme: String
     
-    public var state = String(arc4random_uniform(10000000))
-    public var clientId: String
-    public var grantType: OAuth2GrantType
+    public final let state = String(arc4random_uniform(10000000))
+    private(set) public final var clientId: String
+    private(set) public final var grantType: OAuth2GrantType
     
-    public var authorizationEndpoint: NSURL
-    public var redirectEndpoint: NSURL
+    private(set) public final var authorizationEndpoint: NSURL
+    private(set) public final var redirectEndpoint: NSURL
     
     public var authorizationURLParameters: [String: String?] {
+        guard grantType != .Custom else {
+            preconditionFailure("Custom Grant Type Not Supported")
+        }
         return ["client_id": clientId,
                 "redirect_uri": redirectEndpoint.absoluteString,
                 "response_type": grantType.rawValue,
@@ -28,8 +31,8 @@ public class OAuth2: OAuth2Provider {
     }
     
     public var authorizationURL: NSURL {
-        guard grantType == .Implicit else {
-            preconditionFailure("Authorization Code / Custom Grant Type Not Supported")
+        guard grantType != .Custom else {
+            preconditionFailure("Custom Grant Type Not Supported")
         }
         
         let url = NSURLComponents(URL: authorizationEndpoint, resolvingAgainstBaseURL: false)!

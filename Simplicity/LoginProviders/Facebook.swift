@@ -13,7 +13,7 @@ public class Facebook: OAuth2 {
     
     override public var authorizationURLParameters: [String : String?] {
         var result = super.authorizationURLParameters
-        result["auth_type"] = authType?.rawValue
+        result["auth_type"] = authType.rawValue
         return result
     }
     

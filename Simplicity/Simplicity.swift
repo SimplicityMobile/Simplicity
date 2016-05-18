@@ -20,6 +20,8 @@ public class Simplicity: NSObject {
         self.currentLoginProvider = loginProvider
         self.callback = callback
         
+        print(loginProvider.authorizationURL)
+        
         presentSafariView(loginProvider.authorizationURL)
     }
     
