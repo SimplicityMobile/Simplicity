@@ -17,6 +17,7 @@
 		DF74EC4C1CE2AD19008F16BF /* Simplicity.podspec in Resources */ = {isa = PBXBuildFile; fileRef = DF74EC4B1CE2AD19008F16BF /* Simplicity.podspec */; };
 		DFB3897F1CEBAA57001DDCCE /* LoginError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB3897E1CEBAA57001DDCCE /* LoginError.swift */; };
 		DFB389811CEBAA98001DDCCE /* OAuth2Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB389801CEBAA98001DDCCE /* OAuth2Error.swift */; };
+		DFB389841CEBD6D0001DDCCE /* OAuth2.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB389831CEBD6D0001DDCCE /* OAuth2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		DF74EC4B1CE2AD19008F16BF /* Simplicity.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Simplicity.podspec; sourceTree = "<group>"; };
 		DFB3897E1CEBAA57001DDCCE /* LoginError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginError.swift; sourceTree = "<group>"; };
 		DFB389801CEBAA98001DDCCE /* OAuth2Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuth2Error.swift; sourceTree = "<group>"; };
+		DFB389831CEBD6D0001DDCCE /* OAuth2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OAuth2.swift; path = LoginProviders/OAuth2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				DF74EC491CE2ACF0008F16BF /* Facebook.swift */,
+				DFB389831CEBD6D0001DDCCE /* OAuth2.swift */,
 			);
 			name = LoginProviders;
 			sourceTree = "<group>";
@@ -189,6 +192,7 @@
 			files = (
 				DF74EC411CE2AC2F008F16BF /* LoginProvider.swift in Sources */,
 				DF74EC451CE2AC54008F16BF /* Helpers.swift in Sources */,
+				DFB389841CEBD6D0001DDCCE /* OAuth2.swift in Sources */,
 				DF74EC4A1CE2ACF0008F16BF /* Facebook.swift in Sources */,
 				DFB389811CEBAA98001DDCCE /* OAuth2Error.swift in Sources */,
 				DFB3897F1CEBAA57001DDCCE /* LoginError.swift in Sources */,

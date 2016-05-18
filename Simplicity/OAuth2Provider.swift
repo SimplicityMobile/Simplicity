@@ -16,7 +16,7 @@ public protocol OAuth2Provider: LoginProvider {
 }
 
 public enum OAuth2GrantType: String {
-    case AuthorizationCode = "authorization_code",
-    Implicit = "implicit",
+    case AuthorizationCode = "code",
+    Implicit = "token",
     Custom = ""
 }

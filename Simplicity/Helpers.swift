@@ -9,7 +9,7 @@
 import Foundation
 
 class Helpers {
-    static func registeredURLSchemes(matching closure: String -> Bool) -> [String] {
+    static func registeredURLSchemes(filter closure: String -> Bool) -> [String] {
         guard let urlTypes = NSBundle.mainBundle().infoDictionary?["CFBundleURLTypes"] as? [[String: AnyObject]] else {
             return [String]()
         }
