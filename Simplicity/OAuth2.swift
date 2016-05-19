@@ -22,7 +22,7 @@ public class OAuth2: LoginProvider {
     public final var scopes = Set<String>()
     
     /// The URL Scheme registered by the app.
-    public final let urlScheme: String {
+    public final var urlScheme: String {
         return redirectEndpoint.scheme
     }
     
