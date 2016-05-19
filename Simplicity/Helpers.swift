@@ -9,6 +9,14 @@
 import Foundation
 
 class Helpers {
+    /**
+     Returns a list of URL Schemes that match the filter closure.
+     
+     - parameters:
+       - closure: A closure returning true / false as to whether or not the URL 
+         Scheme matches the filter
+     - returns: A list of URL Schemes that match the filter closure.
+     */
     static func registeredURLSchemes(filter closure: String -> Bool) -> [String] {
         guard let urlTypes = NSBundle.mainBundle().infoDictionary?["CFBundleURLTypes"] as? [[String: AnyObject]] else {
             return [String]()
@@ -20,6 +28,13 @@ class Helpers {
         return urlSchemes.flatMap({closure($0) ? $0 : nil})
     }
     
+    /**
+     Converts a dictionary into a query string.
+     
+     - parameters:
+       - parts: A dictionary of parameters to put in a query string.
+     - returns: A query string
+     */
     static func queryString(parts: [String: String?]) -> String? {
         return parts.flatMap { key, value -> String? in
             if let value = value {

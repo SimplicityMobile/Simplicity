@@ -8,7 +8,12 @@
 
 import Foundation
 
+/**
+ An error produced by a LoginProvider on redirecting back to the app. Error 
+ domain is "Simplicity"
+ */
 public class LoginError: NSError {
+    /// An error that should never happen. If seen, please open a GitHub issue.
     public static let InternalSDKError = LoginError(code: 0, description: "Internal SDK Error")
     
     /**
@@ -25,6 +30,7 @@ public class LoginError: NSError {
         super.init(domain: "Simplicity", code: code, userInfo: userInfo)
     }
     
+    /// Unimplemented stub since NSError implements  requires this init method.
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
