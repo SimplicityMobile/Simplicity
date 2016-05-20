@@ -25,7 +25,7 @@ import Foundation
  Then, you can initiate the login screen by calling:
  
  ```
- Simplicity.login(Facebook()) { (accessToken, error) in
+ Simplicity.login(Google()) { (accessToken, error) in
     // Insert code here
  }
  ```

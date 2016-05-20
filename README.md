@@ -2,47 +2,49 @@
 
 [![Version](https://img.shields.io/cocoapods/v/Simplicity.svg?style=flat)](http://cocoapods.org/pods/Simplicity)
 [![License](https://img.shields.io/cocoapods/l/Simplicity.svg?style=flat)](http://cocoapods.org/pods/Simplicity)
-[![Platform](https://img.shields.io/cocoapods/p/Simplicity.svg?style=flat)](http://cocoapods.org/pods/Simplicity)
+[![Platform](https://img.shields.io/cocoapods/p/Simplicity.svg?style=flat)](http://cocoapods.org/pods/Simplicity) [![codebeat badge](https://codebeat.co/badges/be32bb87-36e8-47e3-9324-5eae153a4d6d)](https://codebeat.co/projects/github-com-simplicitymobile-simplicity)
 
-Requires XCode 7.3+ / Swift 2.3+
+Simplicity is a framework for performing Facebook and Google login in your iOS and OSX apps written by [Edward Jiang](https://twitter.com/edwardstarcraft) at [Stormpath](https://stormpath.com). 
 
-Simplicity is a framework that allows for easy login via external providers on iOS. 
-
-Simplicity supports Facebook and Google Login, and can be easily extended to support other external login providers, including OAuth, OpenID, SAML, and other custom protocols. 
+Simplicity can be easily extended to support other external login providers, including OAuth2, OpenID, SAML, and other custom protocols, and will support more in the future. We always appreciate pull requests!
 
 ## Why use Simplicity?
 
-Facebook and Google's SDKs are heavyweight, and take time to set up and use. Simplicity makes it easier to implement login across multiple providers without adding lots of code to your app. 
+Facebook and Google's SDKs are heavyweight, and take time to set up and use. You can use Simplicity and only have to manage one SDK for logging in with an external provider in your app. Simplicity adds just 200KB to your app's binary, compared to 5.4MB when using the Facebook & Google SDKs. 
 
 Logging in with Simplicity is as easy as:
 
 ```Swift
-Simplicity.login(Facebook()) { (authToken, error) in
+Simplicity.login(Facebook()) { (accessToken, error) in
   // Handle access token here
 }
 ```
 
-## Work In Progress
+## Stormpath
 
-Simplicity is a work in progress, and is being written by [Edward Jiang](https://twitter.com/edwardstarcraft). Work is sponsored by [Stormpath](https://stormpath.com/), a service provider for authentication and authorization. 
+Development of Simplicity is supported by [Stormpath](https://stormpath.com), an API service for authentication, authorization, and user management. If you're building a backend API for your app, consider using Stormpath to help you implement a secure REST API. Read our tutorial on how to [build a REST API for your mobile apps using Node.js](https://stormpath.com/blog/tutorial-build-rest-api-mobile-apps-using-node-js).
 
-This notice will be removed when you can install Simplicity from Cocoapods. While you wait, please star this project! 
+## Installation
 
-## Usage
+Requires XCode 7.3+ / Swift 2.3+
 
-To install Simplicity, just use [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
+To install Simplicity, we use [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
 
 ```ruby
-pod "Simplicity"
+pod 'Simplicity'
 ```
 
-### Getting Started
+**Carthage**
 
-To get started with Simplicity, find the login provider you want to use and read the documentation for how to set it up. Each login provider has different configuration options depending on its capabilities. However, most login providers will autoconfigure based on your Info.plist file so you'll have to do minimal setup. 
+To use Simplicity with [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
+
+```ogdl
+github "SimplicityMobile/Simplicity" ~> 1.2
+```
 
 ### Add the link handlers to the AppDelegate
 
-We need to add the link handlers to the AppDelegate so Simplicity can handle responses from the login providers and their access tokens. Add to `AppDelegate.swift`:
+When a user finishes their log in flow, Facebook or Google will redirect back into the app. Simplicity will listen for the access token or error. You need to add the following lines of code to `AppDelegate.swift`:
 
 ```Swift
 import Simplicity
@@ -56,18 +58,50 @@ func application(application: UIApplication, openURL url: NSURL, sourceApplicati
 }
 ```
 
-### Perform the login!
+# Usage
+
+Simplicity is very flexible and supports a number of configuration options for your login providers. To view, please see the [full API docs on CocoaDocs](http://cocoadocs.org/docsets/Simplicity/). 
+
+## Using Facebook Login
+ 
+To get started, you first need to [register an application](https://developers.facebook.com/?advanced_app_create=true) with Facebook. After registering your app, go into your app dashboard's settings page. Click "Add Platform", and fill in your Bundle ID, and turn "Single Sign On" on.
+
+Finally, open up your App's Xcode project and go to the project's info tab. Under "URL Types", add a new entry, and in the URL schemes form field, type in `fb[APP_ID_HERE]`, replacing `[APP_ID_HERE]` with your Facebook App ID.
+
+Then, you can initiate the login screen by calling:
 
 ```Swift
-// Login with an external provider.
-Simplicity.login(Facebook()) { (authToken, error) in
+Simplicity.login(Facebook()) { (accessToken, error) in
   // Handle access token here
 }
 ```
 
-## Stormpath
+## Using Google Login
 
-Development of Simplicity is supported by [Stormpath](https://stormpath.com), an API service for authentication and user management. If you're building a backend API for your app, and don't want to manage authentication, consider using Stormpath to help you implement a secure REST API. Read our tutorial on how to [build a REST API for your mobile apps using Node.js](https://stormpath.com/blog/tutorial-build-rest-api-mobile-apps-using-node-js).
+To get started, you first need to [register an application](https://console.developers.google.com/project) with Google. Click "Enable and Manage APIs", and then the credentials tab. Create two sets of OAuth Client IDs, one as "Web Application", and one as "iOS". 
+
+Finally, open up your App's Xcode project and go to the project's info tab. Under "URL Types", add a new entry, and in the URL schemes form field, type in your Google iOS Client's `iOS URL scheme` from the Google Developer Console.
+
+Then, you can initiate the login screen by calling:
+
+```Swift
+Simplicity.login(Google()) { (accessToken, error) in
+  // Handle access token here
+}
+```
+
+## Requesting Scopes
+
+If you need custom scopes, you can modify the Facebook or Google object to get them. 
+
+```Swift
+let facebook = Facebook()
+facebook.scopes = ["public_profile", "email", "user_friends"]
+
+Simplicity.login(facebook) { (accessToken, error) in
+  // Handle access token here
+}
+```
 
 ## Twitter, LinkedIn, and GitHub
 
@@ -81,7 +115,7 @@ Want another external login provider implemented? Please [open a GitHub issue](h
 
 ## Contributing
 
-Please send a pull request with your new LoginProvider implemented. Please try to have the LoginProvider autoconfigure, so it's less work for the end user. 
+Please send a pull request with your new LoginProvider implemented. LoginProviders should try to autoconfigure where possible. 
 
 ## License
 
