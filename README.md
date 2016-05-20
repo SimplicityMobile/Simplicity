@@ -4,7 +4,7 @@
 [![License](https://img.shields.io/cocoapods/l/Simplicity.svg?style=flat)](http://cocoapods.org/pods/Simplicity)
 [![Platform](https://img.shields.io/cocoapods/p/Simplicity.svg?style=flat)](http://cocoapods.org/pods/Simplicity) [![codebeat badge](https://codebeat.co/badges/be32bb87-36e8-47e3-9324-5eae153a4d6d)](https://codebeat.co/projects/github-com-simplicitymobile-simplicity)
 
-Simplicity is a framework for performing Facebook and Google login in your iOS and OSX apps written by [Edward Jiang](https://twitter.com/edwardstarcraft) at [Stormpath](https://stormpath.com). 
+Simplicity is a framework for performing Facebook and Google login in your iOS and OS X apps written by [Edward Jiang](https://twitter.com/edwardstarcraft) at [Stormpath](https://stormpath.com). 
 
 Simplicity can be easily extended to support other external login providers, including OAuth2, OpenID, SAML, and other custom protocols, and will support more in the future. We always appreciate pull requests!
 
@@ -22,7 +22,7 @@ Simplicity.login(Facebook()) { (accessToken, error) in
 
 ## Stormpath
 
-Development of Simplicity is supported by [Stormpath](https://stormpath.com), an API service for authentication, authorization, and user management. If you're building a backend API for your app, consider using Stormpath to help you implement a secure REST API. Read our tutorial on how to [build a REST API for your mobile apps using Node.js](https://stormpath.com/blog/tutorial-build-rest-api-mobile-apps-using-node-js).
+Simplicity is maintained by [Stormpath](https://stormpath.com), an API service for authentication, authorization, and user management. If you're building a backend API for your app, consider using Stormpath to help you implement a secure REST API. Read our tutorial on how to [build a REST API for your mobile apps using Node.js](https://stormpath.com/blog/tutorial-build-rest-api-mobile-apps-using-node-js).
 
 ## Installation
 
@@ -39,7 +39,7 @@ pod 'Simplicity'
 To use Simplicity with [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "SimplicityMobile/Simplicity" ~> 1.2
+github "SimplicityMobile/Simplicity"
 ```
 
 ### Add the link handlers to the AppDelegate
