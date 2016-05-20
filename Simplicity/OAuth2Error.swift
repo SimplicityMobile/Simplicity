@@ -32,9 +32,10 @@ public class OAuth2Error: LoginError {
      */
     public class func error(callbackParameters: [String: String]) -> LoginError? {
         let errorCode = mapping[callbackParameters["error"] ?? ""]
-        let errorDescription = callbackParameters["error_description"]
         
-        if let errorCode = errorCode, errorDescription = errorDescription {
+        if let errorCode = errorCode {
+            let errorDescription = callbackParameters["error_description"]?.stringByRemovingPercentEncoding?.stringByReplacingOccurrencesOfString("+", withString: " ") ?? errorCode.description
+            
             return OAuth2Error(code: errorCode.rawValue, description: errorDescription)
         } else {
             return nil
@@ -43,7 +44,7 @@ public class OAuth2Error: LoginError {
 }
 
 /// OAuth 2 Error codes
-public enum OAuth2ErrorCode: Int {
+public enum OAuth2ErrorCode: Int, CustomStringConvertible {
     /**
      The request is missing a required parameter. This is usually programmer 
      error, and should be filed as a GitHub issue.
@@ -67,4 +68,24 @@ public enum OAuth2ErrorCode: Int {
     
     /// The authorization server is currently unavailable. 
     TemporarilyUnavailable
+    
+    /// User readable default error message
+    public var description: String {
+        switch self {
+        case .InvalidRequest:
+            return "The OAuth request is missing a required parameter"
+        case .UnauthorizedClient:
+            return "The client ID is not authorized to make this request"
+        case .AccessDenied:
+            return "You denied the login request"
+        case .UnsupportedResponseType:
+            return "The grant type requested is not supported"
+        case .InvalidScope:
+            return "A scope requested is invalid"
+        case .ServerError:
+            return "The login server experienced an internal error"
+        case .TemporarilyUnavailable:
+            return "The login server is temporarily unavailable. Please try again later. "
+        }
+    }
 }
