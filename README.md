@@ -4,7 +4,7 @@
 [![License](https://img.shields.io/cocoapods/l/Simplicity.svg?style=flat)](http://cocoapods.org/pods/Simplicity)
 [![Platform](https://img.shields.io/cocoapods/p/Simplicity.svg?style=flat)](http://cocoapods.org/pods/Simplicity) [![codebeat badge](https://codebeat.co/badges/be32bb87-36e8-47e3-9324-5eae153a4d6d)](https://codebeat.co/projects/github-com-simplicitymobile-simplicity)
 
-Simplicity is a framework for performing Facebook and Google login in your iOS and OS X apps written by [Edward Jiang](https://twitter.com/edwardstarcraft) at [Stormpath](https://stormpath.com). 
+Simplicity is a simple way to implement Facebook and Google login in your iOS and OS X apps. Written by [Edward Jiang](https://twitter.com/edwardstarcraft) at [Stormpath](https://stormpath.com). 
 
 Simplicity can be easily extended to support other external login providers, including OAuth2, OpenID, SAML, and other custom protocols, and will support more in the future. We always appreciate pull requests!
 
@@ -78,9 +78,9 @@ Simplicity.login(Facebook()) { (accessToken, error) in
 
 ## Using Google Login
 
-To get started, you first need to [register an application](https://console.developers.google.com/project) with Google. Click "Enable and Manage APIs", and then the credentials tab. Create two sets of OAuth Client IDs, one as "Web Application", and one as "iOS". 
+To get started, you first need to [register an application](https://console.developers.google.com/project) with Google. Click "Enable and Manage APIs", and then the credentials tab. Create an OAuth Client ID for "iOS". 
 
-Finally, open up your App's Xcode project and go to the project's info tab. Under "URL Types", add a new entry, and in the URL schemes form field, type in your Google iOS Client's `iOS URL scheme` from the Google Developer Console.
+Next, open up your App's Xcode project and go to the project's info tab. Under "URL Types", add a new entry, and in the URL schemes form field, type in your Google iOS Client's `iOS URL scheme` from the Google Developer Console.
 
 Then, you can initiate the login screen by calling:
 
