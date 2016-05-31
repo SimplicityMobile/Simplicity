@@ -26,7 +26,7 @@ Simplicity is maintained by [Stormpath](https://stormpath.com), an API service f
 
 ## Installation
 
-Requires XCode 7.3+ / Swift 2.3+
+Requires XCode 7.3+ / Swift 2.2+
 
 To install Simplicity, we use [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
 
