@@ -28,3 +28,9 @@ public protocol LoginProvider {
      */
     func linkHandler(url: NSURL, callback: ExternalLoginCallback)
 }
+
+public extension LoginProvider {
+    func login(callback: ExternalLoginCallback) {
+        Simplicity.login(self, callback: callback)
+    }
+}
