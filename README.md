@@ -3,6 +3,7 @@
 [![Version](https://img.shields.io/cocoapods/v/Simplicity.svg?style=flat)](http://cocoapods.org/pods/Simplicity)
 [![License](https://img.shields.io/cocoapods/l/Simplicity.svg?style=flat)](http://cocoapods.org/pods/Simplicity)
 [![Platform](https://img.shields.io/cocoapods/p/Simplicity.svg?style=flat)](http://cocoapods.org/pods/Simplicity) [![codebeat badge](https://codebeat.co/badges/be32bb87-36e8-47e3-9324-5eae153a4d6d)](https://codebeat.co/projects/github-com-simplicitymobile-simplicity)
+[![Slack Status](https://talkstormpath.shipit.xyz/badge.svg)](https://talkstormpath.shipit.xyz)
 
 Simplicity is a simple way to implement Facebook and Google login in your iOS and OS X apps. Written by [Edward Jiang](https://twitter.com/edwardstarcraft) at [Stormpath](https://stormpath.com). 
 
