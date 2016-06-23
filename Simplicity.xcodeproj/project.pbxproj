@@ -14,6 +14,7 @@
 		DF74EC471CE2AC6F008F16BF /* Simplicity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF74EC461CE2AC6F008F16BF /* Simplicity.swift */; };
 		DF74EC4A1CE2ACF0008F16BF /* Facebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF74EC491CE2ACF0008F16BF /* Facebook.swift */; };
 		DF74EC4C1CE2AD19008F16BF /* Simplicity.podspec in Resources */ = {isa = PBXBuildFile; fileRef = DF74EC4B1CE2AD19008F16BF /* Simplicity.podspec */; };
+		DF8674F91D1A0351005C636A /* Instagram.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8674F81D1A0351005C636A /* Instagram.swift */; };
 		DFB3897F1CEBAA57001DDCCE /* LoginError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB3897E1CEBAA57001DDCCE /* LoginError.swift */; };
 		DFB389811CEBAA98001DDCCE /* OAuth2Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB389801CEBAA98001DDCCE /* OAuth2Error.swift */; };
 		DFB389861CECFBFC001DDCCE /* Google.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB389851CECFBFC001DDCCE /* Google.swift */; };
@@ -32,6 +33,7 @@
 		DF74EC461CE2AC6F008F16BF /* Simplicity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Simplicity.swift; sourceTree = "<group>"; };
 		DF74EC491CE2ACF0008F16BF /* Facebook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Facebook.swift; path = LoginProviders/Facebook.swift; sourceTree = "<group>"; };
 		DF74EC4B1CE2AD19008F16BF /* Simplicity.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Simplicity.podspec; sourceTree = "<group>"; };
+		DF8674F81D1A0351005C636A /* Instagram.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Instagram.swift; path = LoginProviders/Instagram.swift; sourceTree = "<group>"; };
 		DFB3897E1CEBAA57001DDCCE /* LoginError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginError.swift; sourceTree = "<group>"; };
 		DFB389801CEBAA98001DDCCE /* OAuth2Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuth2Error.swift; sourceTree = "<group>"; };
 		DFB389851CECFBFC001DDCCE /* Google.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Google.swift; path = LoginProviders/Google.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 			children = (
 				DF74EC491CE2ACF0008F16BF /* Facebook.swift */,
 				DFB389851CECFBFC001DDCCE /* Google.swift */,
+				DF8674F81D1A0351005C636A /* Instagram.swift */,
 			);
 			name = LoginProviders;
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 				DF74EC4A1CE2ACF0008F16BF /* Facebook.swift in Sources */,
 				DFB389811CEBAA98001DDCCE /* OAuth2Error.swift in Sources */,
 				DFB3897F1CEBAA57001DDCCE /* LoginError.swift in Sources */,
+				DF8674F91D1A0351005C636A /* Instagram.swift in Sources */,
 				DF74EC471CE2AC6F008F16BF /* Simplicity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
