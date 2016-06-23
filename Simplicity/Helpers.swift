@@ -57,6 +57,14 @@ extension NSURL {
         return dictionaryFromFormEncodedString(query)
     }
     
+    var fragmentAndQueryDictionary: [String: String] {
+        var result = fragmentDictionary
+        queryDictionary.forEach { (key, value) in
+            result[key] = value
+        }
+        return result
+    }
+    
     private func dictionaryFromFormEncodedString(input: String?) -> [String: String] {
         var result = [String: String]()
         

@@ -84,13 +84,13 @@ public class OAuth2: LoginProvider {
             preconditionFailure("Authorization Code Grant Type Not Supported")
         case .Implicit:
             // Get the access token, and check that the state is the same
-            guard let accessToken = url.fragmentDictionary["access_token"] where url.fragmentDictionary["state"] == state else {
+            guard let accessToken = url.fragmentDictionary["access_token"] where url.fragmentAndQueryDictionary["state"] == state else {
                 /**
                  Facebook's mobile implicit grant type returns errors as 
                  query. Don't think it's a huge issue to be liberal in looking 
                  for errors, so will check both.
                  */
-                if let error = OAuth2Error.error(url.fragmentDictionary) ?? OAuth2Error.error(url.queryDictionary) {
+                if let error = OAuth2Error.error(url.fragmentAndQueryDictionary) {
                     callback(accessToken: nil, error: error)
                 } else {
                     callback(accessToken: nil, error: LoginError.InternalSDKError)
