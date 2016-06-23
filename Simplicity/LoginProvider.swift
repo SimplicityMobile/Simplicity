@@ -9,7 +9,7 @@
 import Foundation
 
 /**
- A LoginProvider represents an external login provider that needs to be opened. 
+ A LoginProvider represents an external login provider that needs to be opened.
  */
 public protocol LoginProvider {
     /// The URL to redirect to when beginning the login process
@@ -19,12 +19,12 @@ public protocol LoginProvider {
     var urlScheme: String { get }
     
     /**
-     Called when the external login provider links back into the application 
-     with a URL Scheme matching the login provider's URL Scheme. 
+     Called when the external login provider links back into the application
+     with a URL Scheme matching the login provider's URL Scheme.
      
      - parameters:
-       - url: The URL that triggered that AppDelegate's link handler
-       - callback: A callback that returns with an access token or NSError.
+     - url: The URL that triggered that AppDelegate's link handler
+     - callback: A callback that returns with an access token or NSError.
      */
     func linkHandler(url: NSURL, callback: ExternalLoginCallback)
 }
@@ -32,5 +32,9 @@ public protocol LoginProvider {
 public extension LoginProvider {
     func login(callback: ExternalLoginCallback) {
         Simplicity.login(self, callback: callback)
+    }
+    
+    func login(callback: ExternalLoginCallback, fromViewController: UIViewController?) {
+        Simplicity.login(self, fromViewController: fromViewController, callback: callback)
     }
 }
