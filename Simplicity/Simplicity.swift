@@ -31,14 +31,14 @@ public final class Simplicity {
         self.currentLoginProvider = loginProvider
         self.callback = callback
         
-        presentSafariView(loginProvider.authorizationURL, fromViewController:nil)
+        presentSafariView(loginProvider.authorizationURL, fromViewController: UIApplication.sharedApplication().delegate?.window??.rootViewController)
     }
     
     public static func login(loginProvider: LoginProvider, fromViewController: UIViewController?, callback: ExternalLoginCallback) {
         self.currentLoginProvider = loginProvider
         self.callback = callback
         
-        presentSafariView(loginProvider.authorizationURL, fromViewController:fromViewController)
+        presentSafariView(loginProvider.authorizationURL, fromViewController: fromViewController)
     }
     
     /// Deep link handler (iOS9)
@@ -61,11 +61,8 @@ public final class Simplicity {
     private static func presentSafariView(url: NSURL, fromViewController:UIViewController?) {
         if #available(iOS 9, *) {
             safari = SFSafariViewController(URL: url)
-            if let _ = fromViewController {
-                fromViewController!.presentViewController(safari!, animated: true, completion: nil)
-            }
-            else {
-                UIApplication.sharedApplication().delegate?.window??.rootViewController?.presentViewController(safari!, animated: true, completion: nil)
+            if let controller = fromViewController {
+                controller.presentViewController(safari!, animated: true, completion: nil)
             }
         } else {
             UIApplication.sharedApplication().openURL(url)
