@@ -9,17 +9,26 @@
 import UIKit
 import SafariServices
 
+public protocol SimplicityDelegate: class {
+    func willLoginBy(sender: String?)
+}
+
 /// Callback handler after an external login completes.
 public typealias ExternalLoginCallback = (accessToken: String?, error: NSError?) -> Void
 
 /**
  Simplicity is a framework for authenticating with external providers on iOS.
  */
-public final class Simplicity {
+public final class Simplicity : NSObject {
+    public static let sharedInstance = Simplicity()
+    public weak var delegate:SimplicityDelegate?
+    
     private static var currentLoginProvider: LoginProvider?
     private static var callback: ExternalLoginCallback?
     private static var safari: UIViewController?
     
+    private override init() {
+    }
     /**
      Begin the login flow by redirecting to the LoginProvider's website.
      
@@ -55,17 +64,32 @@ public final class Simplicity {
     
     /// Deep link handler (<iOS9)
     public static func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        if url.absoluteString.lowercaseString.rangeOfString("fb") != nil {
+            Simplicity.sharedInstance.delegate?.willLoginBy("Facebook")
+        } else if url.absoluteString.lowercaseString.rangeOfString("google") != nil {
+            Simplicity.sharedInstance.delegate?.willLoginBy("Google")
+        } else {
+            Simplicity.sharedInstance.delegate?.willLoginBy(nil)
+        }
         return self.application(application, openURL: url, options: [String: AnyObject]())
     }
     
     private static func presentSafariView(url: NSURL, fromViewController:UIViewController?) {
         if #available(iOS 9, *) {
             safari = SFSafariViewController(URL: url)
+            (safari! as! SFSafariViewController).delegate = Simplicity.sharedInstance
             if let controller = fromViewController {
                 controller.presentViewController(safari!, animated: true, completion: nil)
             }
         } else {
             UIApplication.sharedApplication().openURL(url)
         }
+    }
+}
+
+extension Simplicity : SFSafariViewControllerDelegate {
+    @available(iOS 9.0, *)
+    public func safariViewControllerDidFinish(controller: SFSafariViewController) {
+        Simplicity.sharedInstance.delegate?.willLoginBy(nil)
     }
 }
