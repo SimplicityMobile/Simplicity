@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A132748C1D374C81002ED68B /* VKontakte.swift in Sources */ = {isa = PBXBuildFile; fileRef = A132748B1D374C81002ED68B /* VKontakte.swift */; };
 		DF74EC341CE2A8BB008F16BF /* Simplicity.h in Headers */ = {isa = PBXBuildFile; fileRef = DF74EC331CE2A8BB008F16BF /* Simplicity.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF74EC3F1CE2A943008F16BF /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = DF74EC3E1CE2A943008F16BF /* LICENSE */; };
 		DF74EC411CE2AC2F008F16BF /* LoginProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF74EC401CE2AC2F008F16BF /* LoginProvider.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A132748B1D374C81002ED68B /* VKontakte.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VKontakte.swift; sourceTree = "<group>"; };
 		DF74EC301CE2A8BB008F16BF /* Simplicity.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Simplicity.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF74EC331CE2A8BB008F16BF /* Simplicity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Simplicity.h; sourceTree = "<group>"; };
 		DF74EC351CE2A8BB008F16BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				DF74EC491CE2ACF0008F16BF /* Facebook.swift */,
 				DFB389851CECFBFC001DDCCE /* Google.swift */,
 				DF8674F81D1A0351005C636A /* Instagram.swift */,
+				A132748B1D374C81002ED68B /* VKontakte.swift */,
 			);
 			name = LoginProviders;
 			sourceTree = "<group>";
@@ -194,6 +197,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF74EC411CE2AC2F008F16BF /* LoginProvider.swift in Sources */,
+				A132748C1D374C81002ED68B /* VKontakte.swift in Sources */,
 				DFB389861CECFBFC001DDCCE /* Google.swift in Sources */,
 				DFB389881CED3667001DDCCE /* OAuth2.swift in Sources */,
 				DF74EC451CE2AC54008F16BF /* Helpers.swift in Sources */,
