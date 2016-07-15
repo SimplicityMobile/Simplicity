@@ -77,6 +77,14 @@ Simplicity.login(Facebook()) { (accessToken, error) in
 }
 ```
 
+By request, you can also call `.login` on any `LoginProvider`: 
+
+```Swift
+Facebook().login { (accessToken, error) in
+  // Handle access token here
+}
+```
+
 ## Using Google Login
 
 To get started, you first need to [register an application](https://console.developers.google.com/project) with Google. Click "Enable and Manage APIs", and then the [credentials tab](https://console.developers.google.com/apis/credentials). Create an OAuth Client ID for "iOS". 
