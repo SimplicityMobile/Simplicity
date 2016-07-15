@@ -5,13 +5,15 @@
 [![Platform](https://img.shields.io/cocoapods/p/Simplicity.svg?style=flat)](http://cocoapods.org/pods/Simplicity) [![codebeat badge](https://codebeat.co/badges/be32bb87-36e8-47e3-9324-5eae153a4d6d)](https://codebeat.co/projects/github-com-simplicitymobile-simplicity)
 [![Slack Status](https://talkstormpath.shipit.xyz/badge.svg)](https://talkstormpath.shipit.xyz)
 
-Simplicity is a simple way to implement Facebook and Google login in your iOS and OS X apps. 
+Simplicity is a simple way to implement Facebook and Google login in your iOS apps. 
 
 Simplicity can be easily extended to support other external login providers, including OAuth2, OpenID, SAML, and other custom protocols, and will support more in the future. We always appreciate pull requests!
 
 ## Why use Simplicity?
 
 Facebook and Google's SDKs are heavyweight, and take time to set up and use. You can use Simplicity and only have to manage one SDK for logging in with an external provider in your app. Simplicity adds just 200KB to your app's binary, compared to 5.4MB when using the Facebook & Google SDKs. 
+
+Simplicity is also extensible, and already supports other login providers, like VKontakte (the largest European social network) and generic OAuth providers. 
 
 Logging in with Simplicity is as easy as:
 
@@ -99,7 +101,36 @@ Simplicity.login(Google()) { (accessToken, error) in
 }
 ```
 
-## Requesting Scopes
+## Using VKontakte Login
+
+To get started, you first need to [create an application](https://vk.com/dev/) with VKontakte. 
+After registering your app, go into your client settings page.
+Set App Bundle ID for iOS to your App Bundle in Xcode -> Target -> Bundle Identifier (e.g. com.developer.applicationName)
+
+Finally, open up your App's Xcode project and go to the project's
+info tab. Under "URL Types", add a new entry, and in the URL schemes form
+field, type in `vk[CLIENT_ID_HERE]`. Then, you can initiate the login
+screen by calling:
+
+```
+Simplicity.login(VKontakte()) { (accessToken, error) in
+  // Handle access token here
+}
+```
+
+## Generic OAuth Provider
+
+Simplicity supports any OAuth provider that implements the Implicit grant type. 
+
+```Swift
+let provider = OAuth2(clientId: clientId, authorizationEndpoint: authorizationEndpoint, redirectEndpoint: redirectEndpoint, grantType: .Implicit)
+
+Simplicity.login(provider) { (accessToken, error) in
+  // Handle access token here
+}
+```
+
+## Requesting Scopes for OAuth Providers
 
 If you need custom scopes, you can modify the Facebook or Google object to get them. 
 
