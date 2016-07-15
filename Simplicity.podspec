@@ -5,7 +5,7 @@
 
 Pod::Spec.new do |s|
 s.name             = "Simplicity"
-s.version          = "1.0"
+s.version          = "1.0.2"
 s.summary          = "A simple way to login with Facebook or Google on iOS"
 
 s.description      = <<-DESC
