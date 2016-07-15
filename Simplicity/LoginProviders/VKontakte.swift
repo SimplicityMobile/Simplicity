@@ -9,7 +9,7 @@
 /**
  Class implementing VKontakte (VK.com) implicit grant flow.
 
- ## Using Instagram in your app.
+ ## Using VKontakte in your app.
 
  To get started, you first need to [create an application](https://vk.com/dev/) with VKontakte. 
  After registering your app, go into your client settings page.
