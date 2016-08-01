@@ -23,7 +23,7 @@ public class OAuth2: LoginProvider {
     
     /// The URL Scheme registered by the app.
     public final var urlScheme: String {
-        return redirectEndpoint.scheme
+        return redirectEndpoint.scheme!
     }
     
     /// The state used to prevent CSRF attacks with bad access tokens.
