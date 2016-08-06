@@ -13,7 +13,7 @@ import Foundation
  */
 public protocol LoginProvider {
     /// The URL to redirect to when beginning the login process
-    var authorizationURL: NSURL { get }
+    var authorizationURL: URL { get }
     
     /// The URL Scheme that this LoginProvider is bound to.
     var urlScheme: String { get }
@@ -26,11 +26,11 @@ public protocol LoginProvider {
        - url: The URL that triggered that AppDelegate's link handler
        - callback: A callback that returns with an access token or NSError.
      */
-    func linkHandler(url: NSURL, callback: ExternalLoginCallback)
+    func linkHandler(_ url: URL, callback: ExternalLoginCallback)
 }
 
 public extension LoginProvider {
-    func login(callback: ExternalLoginCallback) {
+    func login(_ callback: ExternalLoginCallback) {
         Simplicity.login(self, callback: callback)
     }
 }

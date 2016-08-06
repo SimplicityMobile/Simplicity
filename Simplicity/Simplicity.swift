@@ -27,17 +27,17 @@ public final class Simplicity {
        - loginProvider: The login provider object configured to be used.
        - callback: A callback with the access token, or a SimplicityError.
      */
-    public static func login(loginProvider: LoginProvider, callback: ExternalLoginCallback) {
+    public static func login(_ loginProvider: LoginProvider, callback: ExternalLoginCallback) {
         self.currentLoginProvider = loginProvider
         self.callback = callback
         
-        presentSafariView(loginProvider.authorizationURL)
+        presentSafariView(loginProvider.authorizationURL as URL)
     }
     
     /// Deep link handler (iOS9)
-    public static func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
-        safari?.dismissViewControllerAnimated(true, completion: nil)
-        guard let callback = callback where url.scheme == currentLoginProvider?.urlScheme else {
+    public static func application(_ app: UIApplication, openURL url: URL, options: [String : AnyObject]) -> Bool {
+        safari?.dismiss(animated: true, completion: nil)
+        guard let callback = callback, url.scheme == currentLoginProvider?.urlScheme else {
             return false
         }
         currentLoginProvider?.linkHandler(url, callback: callback)
@@ -47,16 +47,16 @@ public final class Simplicity {
     }
     
     /// Deep link handler (<iOS9)
-    public static func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+    public static func application(_ application: UIApplication, openURL url: URL, sourceApplication: String?, annotation: AnyObject) -> Bool {
         return self.application(application, openURL: url, options: [String: AnyObject]())
     }
     
-    private static func presentSafariView(url: NSURL) {
+    private static func presentSafariView(_ url: URL) {
         if #available(iOS 9, *) {
-            safari = SFSafariViewController(URL: url)
-            UIApplication.sharedApplication().delegate?.window??.rootViewController?.presentViewController(safari!, animated: true, completion: nil)
+            safari = SFSafariViewController(url: url)
+            UIApplication.shared.delegate?.window??.rootViewController?.present(safari!, animated: true, completion: nil)
         } else {
-            UIApplication.sharedApplication().openURL(url)
+            UIApplication.shared.openURL(url)
         }
     }
 }

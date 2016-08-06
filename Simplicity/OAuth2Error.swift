@@ -15,13 +15,13 @@ import Foundation
  */
 public class OAuth2Error: LoginError {
     /// A mapping of OAuth 2 Error strings to OAuth2ErrorCode enum.
-    public static let mapping: [String: OAuth2ErrorCode] = [ "invalid_request": .InvalidRequest,
-                                                             "unauthorized_client": .UnauthorizedClient,
-                                                             "access_denied": .AccessDenied,
-                                                             "unsupported_response_type": .UnsupportedResponseType,
-                                                             "invalid_scope": .InvalidScope,
-                                                             "server_error": .ServerError,
-                                                             "temporarily_unavailable": .TemporarilyUnavailable ]
+    public static let mapping: [String: OAuth2ErrorCode] = [ "invalid_request": .invalidRequest,
+                                                             "unauthorized_client": .unauthorizedClient,
+                                                             "access_denied": .accessDenied,
+                                                             "unsupported_response_type": .unsupportedResponseType,
+                                                             "invalid_scope": .invalidScope,
+                                                             "server_error": .serverError,
+                                                             "temporarily_unavailable": .temporarilyUnavailable ]
     
     /**
      Constructs a OAuth 2 error object from an OAuth response.
@@ -30,11 +30,11 @@ public class OAuth2Error: LoginError {
        - callbackParameters: A dictionary of OAuth 2 Error response parameters.
      - returns: OAuth2Error object.
      */
-    public class func error(callbackParameters: [String: String]) -> LoginError? {
+    public class func error(_ callbackParameters: [String: String]) -> LoginError? {
         let errorCode = mapping[callbackParameters["error"] ?? ""]
         
         if let errorCode = errorCode {
-            let errorDescription = callbackParameters["error_description"]?.stringByRemovingPercentEncoding?.stringByReplacingOccurrencesOfString("+", withString: " ") ?? errorCode.description
+            let errorDescription = callbackParameters["error_description"]?.removingPercentEncoding?.replacingOccurrences(of: "+", with: " ") ?? errorCode.description
             
             return OAuth2Error(code: errorCode.rawValue, description: errorDescription)
         } else {
@@ -49,42 +49,42 @@ public enum OAuth2ErrorCode: Int, CustomStringConvertible {
      The request is missing a required parameter. This is usually programmer 
      error, and should be filed as a GitHub issue.
      */
-    case InvalidRequest = 100,
+    case invalidRequest = 100,
     
     ///  The client ID is not authorized to make this request.
-    UnauthorizedClient,
+    unauthorizedClient,
     
     /// The user or OAuth server denied this request.
-    AccessDenied,
+    accessDenied,
     
     /// The grant type requested is not supported. This is programmer error.
-    UnsupportedResponseType,
+    unsupportedResponseType,
     
     /// A scope requested is invalid.
-    InvalidScope,
+    invalidScope,
     
     /// The authorization server is currently experiencing an error.
-    ServerError,
+    serverError,
     
     /// The authorization server is currently unavailable. 
-    TemporarilyUnavailable
+    temporarilyUnavailable
     
     /// User readable default error message
     public var description: String {
         switch self {
-        case .InvalidRequest:
+        case .invalidRequest:
             return "The OAuth request is missing a required parameter"
-        case .UnauthorizedClient:
+        case .unauthorizedClient:
             return "The client ID is not authorized to make this request"
-        case .AccessDenied:
+        case .accessDenied:
             return "You denied the login request"
-        case .UnsupportedResponseType:
+        case .unsupportedResponseType:
             return "The grant type requested is not supported"
-        case .InvalidScope:
+        case .invalidScope:
             return "A scope requested is invalid"
-        case .ServerError:
+        case .serverError:
             return "The login server experienced an internal error"
-        case .TemporarilyUnavailable:
+        case .temporarilyUnavailable:
             return "The login server is temporarily unavailable. Please try again later. "
         }
     }
