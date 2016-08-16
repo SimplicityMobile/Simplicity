@@ -7,22 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A132748E1D3750DC002ED68B /* VKontakte.swift in Sources */ = {isa = PBXBuildFile; fileRef = A132748D1D3750DC002ED68B /* VKontakte.swift */; };
+		B51FBD341D6313EA0033F997 /* Facebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51FBD2F1D6313EA0033F997 /* Facebook.swift */; };
+		B51FBD351D6313EA0033F997 /* Google.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51FBD301D6313EA0033F997 /* Google.swift */; };
+		B51FBD361D6313EA0033F997 /* VKontakte.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51FBD311D6313EA0033F997 /* VKontakte.swift */; };
+		B51FBD371D6313EA0033F997 /* FbProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51FBD321D6313EA0033F997 /* FbProvider.swift */; };
+		B51FBD381D6313EA0033F997 /* VkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51FBD331D6313EA0033F997 /* VkProvider.swift */; };
 		DF74EC341CE2A8BB008F16BF /* Simplicity.h in Headers */ = {isa = PBXBuildFile; fileRef = DF74EC331CE2A8BB008F16BF /* Simplicity.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF74EC3F1CE2A943008F16BF /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = DF74EC3E1CE2A943008F16BF /* LICENSE */; };
 		DF74EC411CE2AC2F008F16BF /* LoginProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF74EC401CE2AC2F008F16BF /* LoginProvider.swift */; };
 		DF74EC451CE2AC54008F16BF /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF74EC441CE2AC54008F16BF /* Helpers.swift */; };
 		DF74EC471CE2AC6F008F16BF /* Simplicity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF74EC461CE2AC6F008F16BF /* Simplicity.swift */; };
-		DF74EC4A1CE2ACF0008F16BF /* Facebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF74EC491CE2ACF0008F16BF /* Facebook.swift */; };
 		DF74EC4C1CE2AD19008F16BF /* Simplicity.podspec in Resources */ = {isa = PBXBuildFile; fileRef = DF74EC4B1CE2AD19008F16BF /* Simplicity.podspec */; };
 		DFB3897F1CEBAA57001DDCCE /* LoginError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB3897E1CEBAA57001DDCCE /* LoginError.swift */; };
 		DFB389811CEBAA98001DDCCE /* OAuth2Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB389801CEBAA98001DDCCE /* OAuth2Error.swift */; };
-		DFB389861CECFBFC001DDCCE /* Google.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB389851CECFBFC001DDCCE /* Google.swift */; };
 		DFB389881CED3667001DDCCE /* OAuth2.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB389871CED3667001DDCCE /* OAuth2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A132748D1D3750DC002ED68B /* VKontakte.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VKontakte.swift; path = LoginProviders/VKontakte.swift; sourceTree = "<group>"; };
+		B51FBD2F1D6313EA0033F997 /* Facebook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Facebook.swift; sourceTree = "<group>"; };
+		B51FBD301D6313EA0033F997 /* Google.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Google.swift; sourceTree = "<group>"; };
+		B51FBD311D6313EA0033F997 /* VKontakte.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VKontakte.swift; sourceTree = "<group>"; };
+		B51FBD321D6313EA0033F997 /* FbProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FbProvider.swift; sourceTree = "<group>"; };
+		B51FBD331D6313EA0033F997 /* VkProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VkProvider.swift; sourceTree = "<group>"; };
 		DF74EC301CE2A8BB008F16BF /* Simplicity.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Simplicity.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF74EC331CE2A8BB008F16BF /* Simplicity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Simplicity.h; sourceTree = "<group>"; };
 		DF74EC351CE2A8BB008F16BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -32,11 +38,9 @@
 		DF74EC401CE2AC2F008F16BF /* LoginProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginProvider.swift; sourceTree = "<group>"; };
 		DF74EC441CE2AC54008F16BF /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		DF74EC461CE2AC6F008F16BF /* Simplicity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Simplicity.swift; sourceTree = "<group>"; };
-		DF74EC491CE2ACF0008F16BF /* Facebook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Facebook.swift; path = LoginProviders/Facebook.swift; sourceTree = "<group>"; };
 		DF74EC4B1CE2AD19008F16BF /* Simplicity.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Simplicity.podspec; sourceTree = "<group>"; };
 		DFB3897E1CEBAA57001DDCCE /* LoginError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginError.swift; sourceTree = "<group>"; };
 		DFB389801CEBAA98001DDCCE /* OAuth2Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuth2Error.swift; sourceTree = "<group>"; };
-		DFB389851CECFBFC001DDCCE /* Google.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Google.swift; path = LoginProviders/Google.swift; sourceTree = "<group>"; };
 		DFB389871CED3667001DDCCE /* OAuth2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuth2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -83,11 +87,13 @@
 		DF74EC481CE2ACB8008F16BF /* LoginProviders */ = {
 			isa = PBXGroup;
 			children = (
-				DF74EC491CE2ACF0008F16BF /* Facebook.swift */,
-				DFB389851CECFBFC001DDCCE /* Google.swift */,
-				A132748D1D3750DC002ED68B /* VKontakte.swift */,
+				B51FBD2F1D6313EA0033F997 /* Facebook.swift */,
+				B51FBD301D6313EA0033F997 /* Google.swift */,
+				B51FBD311D6313EA0033F997 /* VKontakte.swift */,
+				B51FBD321D6313EA0033F997 /* FbProvider.swift */,
+				B51FBD331D6313EA0033F997 /* VkProvider.swift */,
 			);
-			name = LoginProviders;
+			path = LoginProviders;
 			sourceTree = "<group>";
 		};
 		DF74EC4D1CE2AE4E008F16BF /* Root Directory */ = {
@@ -193,12 +199,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B51FBD361D6313EA0033F997 /* VKontakte.swift in Sources */,
 				DF74EC411CE2AC2F008F16BF /* LoginProvider.swift in Sources */,
-				A132748E1D3750DC002ED68B /* VKontakte.swift in Sources */,
-				DFB389861CECFBFC001DDCCE /* Google.swift in Sources */,
 				DFB389881CED3667001DDCCE /* OAuth2.swift in Sources */,
 				DF74EC451CE2AC54008F16BF /* Helpers.swift in Sources */,
-				DF74EC4A1CE2ACF0008F16BF /* Facebook.swift in Sources */,
+				B51FBD381D6313EA0033F997 /* VkProvider.swift in Sources */,
+				B51FBD341D6313EA0033F997 /* Facebook.swift in Sources */,
+				B51FBD351D6313EA0033F997 /* Google.swift in Sources */,
+				B51FBD371D6313EA0033F997 /* FbProvider.swift in Sources */,
 				DFB389811CEBAA98001DDCCE /* OAuth2Error.swift in Sources */,
 				DFB3897F1CEBAA57001DDCCE /* LoginError.swift in Sources */,
 				DF74EC471CE2AC6F008F16BF /* Simplicity.swift in Sources */,

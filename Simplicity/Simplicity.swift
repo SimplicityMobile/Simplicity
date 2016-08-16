@@ -53,10 +53,17 @@ public final class Simplicity {
     
     private static func presentSafariView(url: NSURL) {
         if #available(iOS 9, *) {
-            safari = SFSafariViewController(URL: url)
-            UIApplication.sharedApplication().delegate?.window??.rootViewController?.presentViewController(safari!, animated: true, completion: nil)
+            if ["http", "https"].contains(url.scheme.lowercaseString) {
+                // Can open with SFSafariViewController
+                safari = SFSafariViewController(URL: url)
+                UIApplication.sharedApplication().delegate?.window??.rootViewController?.presentViewController(safari!, animated: true, completion: nil)
+            } else {
+                // Scheme is not supported or no scheme is given, use openURL
+                UIApplication.sharedApplication().openURL(url)
+            }
         } else {
             UIApplication.sharedApplication().openURL(url)
         }
     }
+
 }
