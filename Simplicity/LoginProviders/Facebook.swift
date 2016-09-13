@@ -50,12 +50,12 @@ public class Facebook: OAuth2 {
         // Search for URL Scheme, error if not there
         
         guard let urlScheme = Helpers.registeredURLSchemes(filter: {$0.hasPrefix("fb")}).first,
-            range = urlScheme.rangeOfString("\\d+", options: .RegularExpressionSearch) else {
+            let range = urlScheme.range(of: "\\d+", options: .regularExpression) else {
                 preconditionFailure("You must configure your Facebook URL Scheme to use Facebook login.")
         }
-        let clientId = urlScheme.substringWithRange(range)
-        let authorizationEndpoint = NSURL(string: "https://www.facebook.com/dialog/oauth")!
-        let redirectEndpoint = NSURL(string: urlScheme + "://authorize")!
+        let clientId = urlScheme.substring(with: range)
+        let authorizationEndpoint = URL(string: "https://www.facebook.com/dialog/oauth")!
+        let redirectEndpoint = URL(string: urlScheme + "://authorize")!
         
         super.init(clientId: clientId, authorizationEndpoint: authorizationEndpoint, redirectEndpoint: redirectEndpoint, grantType: .Implicit)
     }

@@ -30,12 +30,12 @@ public class VKontakte: OAuth2 {
 
     public init() {
         guard let urlScheme = Helpers.registeredURLSchemes(filter: {$0.hasPrefix("vk")}).first,
-            range = urlScheme.rangeOfString("\\d+", options: .RegularExpressionSearch) else {
+            let range = urlScheme.range(of: "\\d+", options: .regularExpression) else {
                 preconditionFailure("You must configure your VK URL Scheme to use VK login.")
         }
-        let clientId = urlScheme.substringWithRange(range)
-        let authorizationEndpoint = NSURL(string: "https://oauth.vk.com/authorize")!
-        let redirectEndpoint = NSURL(string: urlScheme + "://authorize")!
+        let clientId = urlScheme.substring(with: range)
+        let authorizationEndpoint = URL(string: "https://oauth.vk.com/authorize")!
+        let redirectEndpoint = URL(string: urlScheme + "://authorize")!
 
         super.init(clientId: clientId, authorizationEndpoint: authorizationEndpoint, redirectEndpoint: redirectEndpoint, grantType: .Implicit)
     }

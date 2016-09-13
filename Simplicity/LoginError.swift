@@ -24,7 +24,7 @@ public class LoginError: NSError {
      - description: Localized description of the error.
      */
     public init(code: Int, description: String) {
-        var userInfo = [String: AnyObject]()
+        var userInfo = [String: Any]()
         userInfo[NSLocalizedDescriptionKey] = description
         
         super.init(domain: "Simplicity", code: code, userInfo: userInfo)

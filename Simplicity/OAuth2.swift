@@ -23,7 +23,7 @@ public class OAuth2: LoginProvider {
     
     /// The URL Scheme registered by the app.
     public final var urlScheme: String {
-        return redirectEndpoint.scheme
+        return redirectEndpoint.scheme!
     }
     
     /// The state used to prevent CSRF attacks with bad access tokens.
@@ -36,10 +36,10 @@ public class OAuth2: LoginProvider {
     public final let grantType: OAuth2GrantType
     
     /// The OAuth 2 authorization endpoint
-    public final let authorizationEndpoint: NSURL
+    public final let authorizationEndpoint: URL
     
     /// The OAuth 2 redirection endpoint
-    public final let redirectEndpoint: NSURL
+    public final let redirectEndpoint: URL
     
     /**
      An array with query string parameters for the authorization URL.
@@ -52,23 +52,23 @@ public class OAuth2: LoginProvider {
         return ["client_id": clientId,
                 "redirect_uri": redirectEndpoint.absoluteString,
                 "response_type": grantType.rawValue,
-                "scope": scopes.joinWithSeparator(" "),
+                "scope": scopes.joined(separator: " "),
                 "state": state]
     }
     
     /// The authorization URL to start the OAuth flow. 
-    public var authorizationURL: NSURL {
+    public var authorizationURL: URL {
         guard grantType != .Custom else {
             preconditionFailure("Custom Grant Type Not Supported")
         }
         
-        let url = NSURLComponents(URL: authorizationEndpoint, resolvingAgainstBaseURL: false)!
+        var url = URLComponents(url: authorizationEndpoint, resolvingAgainstBaseURL: false)!
         
-        url.queryItems = authorizationURLParameters.flatMap({key, value -> NSURLQueryItem? in
-            return value != nil ? NSURLQueryItem(name: key, value: value) : nil
+        url.queryItems = authorizationURLParameters.flatMap({key, value -> URLQueryItem? in
+            return value != nil ? URLQueryItem(name: key, value: value) : nil
         })
         
-        return url.URL!
+        return url.url!
     }
     
     /**
@@ -78,27 +78,27 @@ public class OAuth2: LoginProvider {
      - url: The OAuth redirect URL
      - callback: A callback that returns with an access token or NSError.
      */
-    public func linkHandler(url: NSURL, callback: ExternalLoginCallback) {
+    public func linkHandler(_ url: URL, callback: @escaping ExternalLoginCallback) {
         switch grantType {
         case .AuthorizationCode:
             preconditionFailure("Authorization Code Grant Type Not Supported")
         case .Implicit:
             // Get the access token, and check that the state is the same
-            guard let accessToken = url.fragmentDictionary["access_token"] where url.fragmentAndQueryDictionary["state"] == state else {
+            guard let accessToken = url.fragmentDictionary["access_token"], url.fragmentAndQueryDictionary["state"] == state else {
                 /**
                  Facebook's mobile implicit grant type returns errors as 
                  query. Don't think it's a huge issue to be liberal in looking 
                  for errors, so will check both.
                  */
                 if let error = OAuth2Error.error(url.fragmentAndQueryDictionary) {
-                    callback(accessToken: nil, error: error)
+                    callback(nil, error)
                 } else {
-                    callback(accessToken: nil, error: LoginError.InternalSDKError)
+                    callback(nil, LoginError.InternalSDKError)
                 }
                 return
             }
             
-            callback(accessToken: accessToken, error: nil)
+            callback(accessToken, nil)
         case .Custom:
             preconditionFailure("Custom Grant Type Not Supported")
         }
@@ -114,7 +114,7 @@ public class OAuth2: LoginProvider {
        - redirectEndpoint: The redirect URI passed to the provider.
        - grantType: The OAuth 2 Grant Type
      */
-    public init(clientId: String, authorizationEndpoint: NSURL, redirectEndpoint: NSURL, grantType: OAuth2GrantType) {
+    public init(clientId: String, authorizationEndpoint: URL, redirectEndpoint: URL, grantType: OAuth2GrantType) {
         self.grantType = grantType
         self.clientId = clientId
         self.authorizationEndpoint = authorizationEndpoint
