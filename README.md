@@ -52,11 +52,11 @@ When a user finishes their log in flow, Facebook or Google will redirect back in
 ```Swift
 import Simplicity
 
-func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
+func application(_ app: UIApplication, openURL url: URL, options: [UIApplicationOpenURLOptionsKey: Any]) -> Bool {
   return Simplicity.application(app, openURL: url, options: options)
 }
 
-func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+func application(_ application: UIApplication, openURL url: URL, sourceApplication: String?, annotation: Any) -> Bool {
   return Simplicity.application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
 }
 ```
