@@ -10,7 +10,7 @@ import UIKit
 import SafariServices
 
 /// Callback handler after an external login completes.
-public typealias ExternalLoginCallback = (accessToken: String?, error: NSError?) -> Void
+public typealias ExternalLoginCallback = (String?, NSError?) -> Void
 
 /** 
  Simplicity is a framework for authenticating with external providers on iOS.
@@ -27,7 +27,7 @@ public final class Simplicity {
        - loginProvider: The login provider object configured to be used.
        - callback: A callback with the access token, or a SimplicityError.
      */
-    public static func login(_ loginProvider: LoginProvider, callback: ExternalLoginCallback) {
+    public static func login(_ loginProvider: LoginProvider, callback: @escaping ExternalLoginCallback) {
         self.currentLoginProvider = loginProvider
         self.callback = callback
         

@@ -78,7 +78,7 @@ public class OAuth2: LoginProvider {
      - url: The OAuth redirect URL
      - callback: A callback that returns with an access token or NSError.
      */
-    public func linkHandler(_ url: URL, callback: ExternalLoginCallback) {
+    public func linkHandler(_ url: URL, callback: @escaping ExternalLoginCallback) {
         switch grantType {
         case .AuthorizationCode:
             preconditionFailure("Authorization Code Grant Type Not Supported")
@@ -91,14 +91,14 @@ public class OAuth2: LoginProvider {
                  for errors, so will check both.
                  */
                 if let error = OAuth2Error.error(url.fragmentAndQueryDictionary) {
-                    callback(accessToken: nil, error: error)
+                    callback(nil, error)
                 } else {
-                    callback(accessToken: nil, error: LoginError.InternalSDKError)
+                    callback(nil, LoginError.InternalSDKError)
                 }
                 return
             }
             
-            callback(accessToken: accessToken, error: nil)
+            callback(accessToken, nil)
         case .Custom:
             preconditionFailure("Custom Grant Type Not Supported")
         }

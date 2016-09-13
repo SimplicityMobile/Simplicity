@@ -57,19 +57,19 @@ public class Google: OAuth2 {
      - url: The OAuth redirect URL
      - callback: A callback that returns with an access token or NSError.
      */
-    override public func linkHandler(_ url: URL, callback: ExternalLoginCallback) {
+    override public func linkHandler(_ url: URL, callback: @escaping ExternalLoginCallback) {
         guard let authorizationCode = url.queryDictionary["code"], url.queryDictionary["state"] == state else {
             if let error = OAuth2Error.error(url.queryDictionary) ?? OAuth2Error.error(url.queryDictionary) {
-                callback(accessToken: nil, error: error)
+                callback(nil, error)
             } else {
-                callback(accessToken: nil, error: LoginError.InternalSDKError)
+                callback(nil, LoginError.InternalSDKError)
             }
             return
         }
         exchangeCodeForAccessToken(authorizationCode, callback: callback)
     }
     
-    private func exchangeCodeForAccessToken(_ authorizationCode: String, callback: ExternalLoginCallback) {
+    private func exchangeCodeForAccessToken(_ authorizationCode: String, callback: @escaping ExternalLoginCallback) {
         let session = URLSession(configuration: URLSessionConfiguration.ephemeral)
         let url = URL(string: "https://www.googleapis.com/oauth2/v4/token")!
         
@@ -83,11 +83,11 @@ public class Google: OAuth2 {
         request.httpBody = Helpers.queryString(requestParams)?.data(using: String.Encoding.utf8)
         
         let task = session.dataTask(with: request) { (data, response, error) -> Void in
-            guard let data = data, let json = try? JSONSerialization.jsonObject(with: data, options: []), let accessToken = json["access_token"] as? String else {
-                callback(accessToken: nil, error: LoginError.InternalSDKError) // This request should not fail.
+            guard let data = data, let json = (try? JSONSerialization.jsonObject(with: data, options: [])) as? [String: Any], let accessToken = json["access_token"] as? String else {
+                callback(nil, LoginError.InternalSDKError) // This request should not fail.
                 return
             }
-            callback(accessToken: accessToken, error: nil)
+            callback(accessToken, nil)
         }
         task.resume()
     }

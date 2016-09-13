@@ -26,11 +26,11 @@ public protocol LoginProvider {
        - url: The URL that triggered that AppDelegate's link handler
        - callback: A callback that returns with an access token or NSError.
      */
-    func linkHandler(_ url: URL, callback: ExternalLoginCallback)
+    func linkHandler(_ url: URL, callback: @escaping ExternalLoginCallback)
 }
 
 public extension LoginProvider {
-    func login(_ callback: ExternalLoginCallback) {
+    func login(_ callback: @escaping ExternalLoginCallback) {
         Simplicity.login(self, callback: callback)
     }
 }
