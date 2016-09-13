@@ -29,7 +29,7 @@ Simplicity is maintained by [Stormpath](https://stormpath.com), an API service f
 
 ## Installation
 
-Requires XCode 7.3+ / Swift 2.2+
+Requires XCode 8+ / Swift 3+
 
 To install Simplicity, we use [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
 
@@ -45,6 +45,13 @@ To use Simplicity with [Carthage](https://github.com/Carthage/Carthage), specify
 github "SimplicityMobile/Simplicity"
 ```
 
+**Swift 2**
+
+Older versions of Simplicity support Swift 2.3 (Xcode 8) or Swift 2.2 (Xcode 7).
+
+* Swift 2.3 support is on branch [`swift2.3`](https://github.com/SimplicityMobile/Simplicity/tree/swift2.3)
+* Swift 2.2 support is on version [`1.x`](https://github.com/SimplicityMobile/Simplicity/tree/1.0.2)
+
 ### Add the link handlers to the AppDelegate
 
 When a user finishes their log in flow, Facebook or Google will redirect back into the app. Simplicity will listen for the access token or error. You need to add the following lines of code to `AppDelegate.swift`:
@@ -52,12 +59,12 @@ When a user finishes their log in flow, Facebook or Google will redirect back in
 ```Swift
 import Simplicity
 
-func application(_ app: UIApplication, openURL url: URL, options: [UIApplicationOpenURLOptionsKey: Any]) -> Bool {
-  return Simplicity.application(app, openURL: url, options: options)
+func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey: Any]) -> Bool {
+    return Simplicity.application(app, open: url, options: options)
 }
 
-func application(_ application: UIApplication, openURL url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-  return Simplicity.application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
+func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+    return Simplicity.application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
 }
 ```
 
