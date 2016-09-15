@@ -21,6 +21,7 @@ class VkProvider: OAuth2 {
     
         let authorizationEndpoint = UIApplication.shared.canOpenURL(appURL) ? appURL : safariURL
         let redirectEndpoint = URL(string: urlScheme + "://authorize")!
+
         
         super.init(clientId: clientId, authorizationEndpoint: authorizationEndpoint, redirectEndpoint: redirectEndpoint, grantType: .Implicit)
     }

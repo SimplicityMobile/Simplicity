@@ -14,6 +14,7 @@ class FbProvider: OAuth2 {
     
     /// An array with query string parameters for the authorization URL.
     override open var authorizationURLParameters: [String : String?] {
+
         var result = super.authorizationURLParameters
         result["auth_type"] = authType.rawValue
         return result
