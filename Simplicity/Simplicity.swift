@@ -19,7 +19,7 @@ public final class Simplicity: NSObject, SFSafariViewControllerDelegate {
     private static var currentLoginProvider: LoginProvider?
     private static var callback: ExternalLoginCallback?
     private static var safari: UIViewController?
-    private static let instance = Simplicity ()
+    private static let instance = Simplicity()
 
     /**
      Begin the login flow by redirecting to the LoginProvider's website.
@@ -55,10 +55,12 @@ public final class Simplicity: NSObject, SFSafariViewControllerDelegate {
     private static func presentSafariView(_ url: URL) {
         if #available(iOS 9, *) {
             safari = SFSafariViewController(url: url)
-            (safari as! SFSafariViewController).delegate = instance
             var topController = UIApplication.shared.keyWindow?.rootViewController
             while let vc = topController?.presentedViewController {
                 topController = vc
+            }
+            if let safari = safari as? SFSafariViewController {
+                safari.delegate = instance
             }
             topController?.present(safari!, animated: true, completion: nil)
         } else {
@@ -68,6 +70,9 @@ public final class Simplicity: NSObject, SFSafariViewControllerDelegate {
     
     @available(iOS 9.0, *)
     public func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
-        Simplicity.callback!(nil, LoginError.InternalSDKError)
+        guard let callback = Simplicity.callback else {
+            return
+        }
+        callback(nil, LoginError.LoginCancelledError)
     }
 }

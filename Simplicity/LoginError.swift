@@ -16,6 +16,9 @@ public class LoginError: NSError {
     /// An error that should never happen. If seen, please open a GitHub issue.
     public static let InternalSDKError = LoginError(code: 0, description: "Internal SDK Error")
     
+    /// An error if user cancel the SafariViewController.
+    public static let LoginCancelledError = LoginError(code: 1, description: "Login Cancelled by user")
+
     /**
      Initializer for LoginError
      
