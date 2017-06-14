@@ -15,11 +15,12 @@ public typealias ExternalLoginCallback = (String?, NSError?) -> Void
 /** 
  Simplicity is a framework for authenticating with external providers on iOS.
  */
-public final class Simplicity {
+public final class Simplicity: NSObject, SFSafariViewControllerDelegate {
     private static var currentLoginProvider: LoginProvider?
     private static var callback: ExternalLoginCallback?
     private static var safari: UIViewController?
-    
+    private static let instance = Simplicity()
+
     /**
      Begin the login flow by redirecting to the LoginProvider's website.
      
@@ -58,9 +59,20 @@ public final class Simplicity {
             while let vc = topController?.presentedViewController {
                 topController = vc
             }
+            if let safari = safari as? SFSafariViewController {
+                safari.delegate = instance
+            }
             topController?.present(safari!, animated: true, completion: nil)
         } else {
             UIApplication.shared.openURL(url)
         }
+    }
+    
+    @available(iOS 9.0, *)
+    public func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+        guard let callback = Simplicity.callback else {
+            return
+        }
+        callback(nil, LoginError.LoginCancelledError)
     }
 }
