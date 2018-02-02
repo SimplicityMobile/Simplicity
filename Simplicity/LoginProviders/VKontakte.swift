@@ -33,10 +33,10 @@ public class VKontakte: OAuth2 {
             let range = urlScheme.range(of: "\\d+", options: .regularExpression) else {
                 preconditionFailure("You must configure your VK URL Scheme to use VK login.")
         }
-        let clientId = urlScheme.substring(with: range)
+        let clientId = urlScheme[range.lowerBound..<range.upperBound]
         let authorizationEndpoint = URL(string: "https://oauth.vk.com/authorize")!
         let redirectEndpoint = URL(string: urlScheme + "://authorize")!
 
-        super.init(clientId: clientId, authorizationEndpoint: authorizationEndpoint, redirectEndpoint: redirectEndpoint, grantType: .Implicit)
+        super.init(clientId: String(clientId), authorizationEndpoint: authorizationEndpoint, redirectEndpoint: redirectEndpoint, grantType: .Implicit)
     }
 }

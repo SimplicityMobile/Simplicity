@@ -53,11 +53,11 @@ public class Facebook: OAuth2 {
             let range = urlScheme.range(of: "\\d+", options: .regularExpression) else {
                 preconditionFailure("You must configure your Facebook URL Scheme to use Facebook login.")
         }
-        let clientId = urlScheme.substring(with: range)
+        let clientId = urlScheme[range.lowerBound..<range.upperBound]
         let authorizationEndpoint = URL(string: "https://www.facebook.com/dialog/oauth")!
         let redirectEndpoint = URL(string: urlScheme + "://authorize")!
         
-        super.init(clientId: clientId, authorizationEndpoint: authorizationEndpoint, redirectEndpoint: redirectEndpoint, grantType: .Implicit)
+        super.init(clientId: String(clientId), authorizationEndpoint: authorizationEndpoint, redirectEndpoint: redirectEndpoint, grantType: .Implicit)
     }
 }
 
