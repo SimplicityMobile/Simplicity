@@ -18,13 +18,19 @@ class Helpers {
      - returns: A list of URL Schemes that match the filter closure.
      */
     static func registeredURLSchemes(filter closure: (String) -> Bool) -> [String] {
+        // Retrieve url types from the main bundle
         guard let urlTypes = Bundle.main.infoDictionary?["CFBundleURLTypes"] as? [[String: AnyObject]] else {
             return [String]()
         }
         
         // Convert the complex dictionary into an array of URL schemes
-        let urlSchemes = urlTypes.compactMap({($0["CFBundleURLSchemes"] as? [String])?.first })
+        let urlSchemes: [String] = urlTypes.reduce(into: []) { (result, component) in
+            if let schemes = component["CFBundleURLSchemes"] as? [String] {
+                result.append(contentsOf: schemes)
+            }
+        }
         
+        // Filter schemes with parameter block
         return urlSchemes.compactMap({closure($0) ? $0 : nil})
     }
     
