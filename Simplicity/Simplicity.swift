@@ -35,7 +35,7 @@ public final class Simplicity {
     }
     
     /// Deep link handler (iOS9)
-    public static func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey: Any]) -> Bool {
+    public static func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any]) -> Bool {
         safari?.dismiss(animated: true, completion: nil)
         guard let callback = callback, url.scheme == currentLoginProvider?.urlScheme else {
             return false
@@ -48,7 +48,7 @@ public final class Simplicity {
     
     /// Deep link handler (<iOS9)
     public static func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-        return self.application(application, open: url, options: [UIApplicationOpenURLOptionsKey: Any]())
+        return self.application(application, open: url, options: [UIApplication.OpenURLOptionsKey: Any]())
     }
     
     private static func presentSafariView(_ url: URL) {

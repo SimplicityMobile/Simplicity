@@ -23,9 +23,9 @@ class Helpers {
         }
         
         // Convert the complex dictionary into an array of URL schemes
-        let urlSchemes = urlTypes.flatMap({($0["CFBundleURLSchemes"] as? [String])?.first })
+        let urlSchemes = urlTypes.compactMap({($0["CFBundleURLSchemes"] as? [String])?.first })
         
-        return urlSchemes.flatMap({closure($0) ? $0 : nil})
+        return urlSchemes.compactMap({closure($0) ? $0 : nil})
     }
     
     /**
@@ -36,7 +36,7 @@ class Helpers {
      - returns: A query string
      */
     static func queryString(_ parts: [String: String?]) -> String? {
-        return parts.flatMap { key, value -> String? in
+        return parts.compactMap { key, value -> String? in
             if let value = value {
                 return key + "=" + value
             } else {
