@@ -15,7 +15,7 @@ Simplicity can be easily extended to support other external login providers, inc
 
 DESC
 
-s.homepage         = "https://github.com/SimplicityMobile/Simplicity"
+s.homepage         = "https://github.com/ppaulojr/Simplicity"
 s.license          = 'Apache 2.0'
 s.author           = { "Edward Jiang" => "edward@stormpath.com" }
 s.source           = { :git => "https://github.com/ppaulojr/Simplicity.git", :tag => s.version.to_s }
