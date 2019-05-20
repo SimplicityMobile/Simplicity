@@ -18,7 +18,7 @@ DESC
 s.homepage         = "https://github.com/SimplicityMobile/Simplicity"
 s.license          = 'Apache 2.0'
 s.author           = { "Edward Jiang" => "edward@stormpath.com" }
-s.source           = { :git => "https://github.com/SimplicityMobile/Simplicity.git", :tag => s.version.to_s }
+s.source           = { :git => "https://github.com/ppaulojr/Simplicity.git", :tag => s.version.to_s }
 s.social_media_url = 'https://twitter.com/EdwardStarcraft'
 
 s.ios.deployment_target = '8.0'
