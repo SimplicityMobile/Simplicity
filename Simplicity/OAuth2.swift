@@ -64,7 +64,7 @@ public class OAuth2: LoginProvider {
         
         var url = URLComponents(url: authorizationEndpoint, resolvingAgainstBaseURL: false)!
         
-        url.queryItems = authorizationURLParameters.flatMap({key, value -> URLQueryItem? in
+        url.queryItems = authorizationURLParameters.compactMap({key, value -> URLQueryItem? in
             return value != nil ? URLQueryItem(name: key, value: value) : nil
         })
         
