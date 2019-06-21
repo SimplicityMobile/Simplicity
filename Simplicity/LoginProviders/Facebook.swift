@@ -38,7 +38,12 @@ public class Facebook: OAuth2 {
     /// An array with query string parameters for the authorization URL.
     override public var authorizationURLParameters: [String : String?] {
         var result = super.authorizationURLParameters
+        // Required parameters to have the button to connect via the native fb app
         result["auth_type"] = authType.rawValue
+        result["display"] = "touch"
+        result["sdk"] = "ios"
+        result["fbapp_pres"] = "1"
+        result["sdk_version"] = "4.31.1"
         return result
     }
     
@@ -53,7 +58,7 @@ public class Facebook: OAuth2 {
             let range = urlScheme.range(of: "\\d+", options: .regularExpression) else {
                 preconditionFailure("You must configure your Facebook URL Scheme to use Facebook login.")
         }
-        let clientId = urlScheme.substring(with: range)
+        let clientId = String(urlScheme[range.lowerBound..<range.upperBound])
         let authorizationEndpoint = URL(string: "https://www.facebook.com/dialog/oauth")!
         let redirectEndpoint = URL(string: urlScheme + "://authorize")!
         
